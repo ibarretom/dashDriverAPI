@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  database:
+    image: postgres
+    container_name: dash_driver
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=dash_driver
+
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
