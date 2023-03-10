@@ -1,11 +1,9 @@
-import { Request, Response, Router } from 'express'
+import { Router } from 'express'
+
+import { UserRouter } from './Users.routes'
 
 const router = Router()
 
-router.get('/', (req: Request, res: Response) => {
-  return res.status(200).json({
-    ola: 'mundo',
-  })
-})
+router.use('/users', UserRouter)
 
 export { router }
