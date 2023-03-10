@@ -1,5 +1,6 @@
-import 'reflect-metadata'
 import { DataSource } from 'typeorm'
+
+import { User } from '../entities/User'
 
 import { createUser1678407280639 } from '../migrations/1678407280639-create_user'
 
@@ -10,7 +11,7 @@ const AppDataSource = new DataSource({
   username: 'root',
   password: 'password',
   database: 'dash_driver',
-  entities: [],
+  entities: [User],
   migrations: [createUser1678407280639],
   synchronize: true,
   logging: false,
