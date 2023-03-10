@@ -1,8 +1,11 @@
 import { Router } from 'express'
-import { CreateUserController } from '../controllers/user/CreateUserController'
+
+import { createUsersController } from '../controllers/user/CreateUsers/'
 
 const UserRouter = Router()
 
-UserRouter.post('/', new CreateUserController().handle)
+UserRouter.post('/', (req, res) => {
+  createUsersController.handle(req, res)
+})
 
 export { UserRouter }
