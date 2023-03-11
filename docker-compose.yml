@@ -12,6 +12,17 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=dash_driver
 
+  database2:
+    image: postgres
+    container_name: dash_driver_test
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=dash_driver_test
+
   redis:
     image: redis:alpine
     ports:
