@@ -28,7 +28,7 @@ export class CreateUsersController {
 
       return response.status(201).json(createdUser)
     } catch (err: any) {
-      return response.status(400).json({ message: err.message, err: err })
+      return response.status(err.statusCode).json(err)
     }
   }
 }

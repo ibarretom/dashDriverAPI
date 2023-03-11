@@ -1,6 +1,8 @@
-import { User } from '../../entities/User'
 import { IUsersRepository } from '../../repositories/user/IUsersRepository'
 import { hash } from 'bcrypt'
+
+import { AppError } from '../../errors/AppError'
+
 type UserRequest = {
   name: string
   email: string
@@ -42,10 +44,10 @@ export class CreateUsersService {
       }
     } catch (err: any) {
       if (err.code == '23505') {
-        throw new Error('Email has already been taken')
+        throw new AppError('Email has already been taken')
       }
 
-      throw new Error('Error creating user')
+      throw new AppError('Error creating user', 500)
     }
   }
 
