@@ -7,6 +7,15 @@ type UserRequest = {
   password: string
 }
 
+type UserResponse = {
+  id: string
+  name: string
+  email: string
+  photo_url: string
+  created_at: Date
+  updated_at: Date
+}
+
 export class CreateUsersService {
   private usersRepository: IUsersRepository
 
@@ -14,7 +23,7 @@ export class CreateUsersService {
     this.usersRepository = usersRepository
   }
 
-  async execute(user: UserRequest): Promise<User> {
+  async execute(user: UserRequest): Promise<UserResponse> {
     const hashed_password = await this.hashPassword(user.password)
 
     try {
@@ -23,7 +32,14 @@ export class CreateUsersService {
         password: hashed_password,
       })
 
-      return createdUser
+      return {
+        id: createdUser.id,
+        name: createdUser.name,
+        email: createdUser.email,
+        photo_url: createdUser.photo_url,
+        created_at: createdUser.created_at,
+        updated_at: createdUser.updated_at,
+      }
     } catch (err: any) {
       if (err.code == '23505') {
         throw new Error('Email has already been taken')

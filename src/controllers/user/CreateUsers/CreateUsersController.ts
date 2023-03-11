@@ -10,7 +10,7 @@ export class CreateUsersController {
     this.createUsersService = createUsersService
   }
 
-  async handle(request: Request, response: Response) {
+  async handle(request: Request, response: Response): Promise<Response> {
     const requestSchema = z.object({
       name: z.string(),
       email: z.string().email(),
