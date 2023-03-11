@@ -1,10 +1,13 @@
-import express from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import cors from 'cors'
 import 'dotenv/config'
 import 'reflect-metadata'
+import 'express-async-errors'
 
 import { router } from './routes/index.routes'
 import { AppDataSource } from './config/typeorm'
+
+import { AppError } from './errors/AppError'
 
 const app = express()
 
@@ -15,6 +18,16 @@ process.env.NODE_ENV != 'test' &&
   AppDataSource.initialize()
     .then(() => console.log('databaseStarted'))
     .catch((err) => console.log(err))
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  if (err instanceof AppError) {
+    return res.status(err.statusCode).json({
+      status: 'error',
+      message: err.message,
+    })
+  }
+  return res.status(500).json({ message: err.message })
+})
 
 app.use(router)
 
