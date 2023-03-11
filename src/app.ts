@@ -11,9 +11,10 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-AppDataSource.initialize()
-  .then(() => console.log('databaseStarted'))
-  .catch((err) => console.log(err))
+process.env.NODE_ENV != 'test' &&
+  AppDataSource.initialize()
+    .then(() => console.log('databaseStarted'))
+    .catch((err) => console.log(err))
 
 app.use(router)
 
