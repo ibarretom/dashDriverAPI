@@ -11,8 +11,9 @@ export class UsersRepositoryInMemory implements IUsersRepository {
         id: 'test-id',
         name: 'test',
         email: 'test@email.com',
-        password: 'password',
-        photo_url: 'null',
+        password:
+          '$2b$08$EQt3pOXW0.YNZK.Zthb12eJf6mrx7pnTSvVR.ZbwRfMJtOdJGCefy',
+        photo_url: 'url',
         created_at: new Date(),
         updated_at: new Date(),
       },
@@ -39,5 +40,15 @@ export class UsersRepositoryInMemory implements IUsersRepository {
     this.repository.push(createdUser)
 
     return createdUser
+  }
+
+  async findByEmail(email: string): Promise<User | null> {
+    let user = this.repository.find((u) => u.email == email)
+
+    if (!user) {
+      return null
+    }
+
+    return user
   }
 }
