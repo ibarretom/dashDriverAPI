@@ -13,16 +13,9 @@ export class SignInController {
     })
 
     const { email, password } = signInSchema.parse(request.body)
-    try {
-      const user = await this.signInService.execute({ email, password })
 
-      return response.status(200).json(user)
-    } catch (err) {
-      if (err instanceof AppError) {
-        return response.status(err.statusCode).json(err)
-      }
+    const user = await this.signInService.execute({ email, password })
 
-      return response.status(500).json(err)
-    }
+    return response.status(200).json(user)
   }
 }

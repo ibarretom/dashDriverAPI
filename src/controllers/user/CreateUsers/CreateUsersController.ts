@@ -17,18 +17,14 @@ export class CreateUsersController {
       password: z.string().min(8),
     })
 
-    try {
-      const { name, email, password } = requestSchema.parse(request.body)
+    const { name, email, password } = requestSchema.parse(request.body)
 
-      const createdUser = await this.createUsersService.execute({
-        name,
-        email,
-        password,
-      })
+    const createdUser = await this.createUsersService.execute({
+      name,
+      email,
+      password,
+    })
 
-      return response.status(201).json(createdUser)
-    } catch (err: any) {
-      return response.status(err.statusCode).json(err)
-    }
+    return response.status(201).json(createdUser)
   }
 }

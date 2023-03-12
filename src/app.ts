@@ -1,8 +1,8 @@
+import 'express-async-errors'
 import express, { NextFunction, Request, Response } from 'express'
 import cors from 'cors'
 import 'dotenv/config'
 import 'reflect-metadata'
-import 'express-async-errors'
 
 import { router } from './routes/index.routes'
 import { AppDataSource } from './config/typeorm'
@@ -19,6 +19,8 @@ process.env.NODE_ENV != 'test' &&
     .then(() => console.log('databaseStarted'))
     .catch((err) => console.log(err))
 
+app.use(router)
+
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({
@@ -28,7 +30,5 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   }
   return res.status(500).json({ message: err.message })
 })
-
-app.use(router)
 
 export { app }
