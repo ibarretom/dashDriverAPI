@@ -3,6 +3,7 @@ import { DataSource } from 'typeorm'
 import { User } from '../entities/User'
 
 import { createUser1678407280639 } from '../migrations/1678407280639-create_user'
+import { createAddress1678744670794 } from '../migrations/1678744670794-create_address'
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -12,7 +13,7 @@ const AppDataSource = new DataSource({
   password: 'password',
   database: process.env.NODE_ENV == 'test' ? 'dash_driver_test' : 'dash_driver',
   entities: [User],
-  migrations: [createUser1678407280639],
+  migrations: [createUser1678407280639, createAddress1678744670794],
   synchronize: true,
   logging: false,
 })
