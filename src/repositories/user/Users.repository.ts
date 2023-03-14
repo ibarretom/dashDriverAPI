@@ -4,7 +4,7 @@ import { AppDataSource } from '../../config/typeorm'
 import { User } from '../../entities/User.entity'
 
 import { IUsersDto } from '../../dto/IUsers.dto'
-import { IUsersRepository } from './IUsersRepository'
+import { IUsersRepository } from './IUsers.repository'
 
 export class UsersRepository implements IUsersRepository {
   private repository: Repository<User>

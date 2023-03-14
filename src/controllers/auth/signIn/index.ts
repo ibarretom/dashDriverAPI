@@ -1,4 +1,4 @@
-import { UsersRepository } from '../../../repositories/user/UsersRepository'
+import { UsersRepository } from '../../../repositories/user/Users.repository'
 import { SignInService } from '../../../service/auth/SignIn.service'
 import { SignInController } from './SignInController'
 

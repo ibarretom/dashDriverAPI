@@ -1,9 +1,9 @@
 import { object } from 'zod'
 import { IUsersDto } from '../../dto/IUsers.dto'
 import { User } from '../../entities/User.entity'
-import { IUsersRepository } from './IUsersRepository'
+import { IUsersRepository } from './IUsers.repository'
 
-export class UsersRepositoryInMemory implements IUsersRepository {
+export class UsersInMemoryRepository implements IUsersRepository {
   private repository: Array<User>
   constructor() {
     this.repository = [

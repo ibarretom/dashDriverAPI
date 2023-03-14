@@ -1,8 +1,8 @@
 import { verify } from 'jsonwebtoken'
 import { auth } from '../../../src/config/auth'
 
-import { IUsersRepository } from '../../../src/repositories/user/IUsersRepository'
-import { UsersRepositoryInMemory } from '../../../src/repositories/user/UsersRepositoryInMemory'
+import { IUsersRepository } from '../../../src/repositories/user/IUsers.repository'
+import { UsersInMemoryRepository } from '../../../src/repositories/user/UsersInMemory.repository'
 import { SignInService } from '../../../src/service/auth/SignIn.service'
 
 let usersRepository: IUsersRepository
@@ -10,7 +10,7 @@ let signInService: SignInService
 
 describe('Sign in service', () => {
   beforeEach(() => {
-    usersRepository = new UsersRepositoryInMemory()
+    usersRepository = new UsersInMemoryRepository()
     signInService = new SignInService(usersRepository)
   })
 

@@ -1,4 +1,4 @@
-import { IUsersRepository } from '../../repositories/user/IUsersRepository'
+import { IUsersRepository } from '../../repositories/user/IUsers.repository'
 import { hash } from 'bcrypt'
 
 import { AppError } from '../../errors/AppError'

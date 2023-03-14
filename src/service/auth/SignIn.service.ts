@@ -1,4 +1,4 @@
-import { IUsersRepository } from '../../repositories/user/IUsersRepository'
+import { IUsersRepository } from '../../repositories/user/IUsers.repository'
 
 import { compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'

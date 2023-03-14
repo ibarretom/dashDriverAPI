@@ -1,5 +1,5 @@
-import { IUsersRepository } from '../../../src/repositories/user/IUsersRepository'
-import { UsersRepositoryInMemory } from '../../../src/repositories/user/UsersRepositoryInMemory'
+import { IUsersRepository } from '../../../src/repositories/user/IUsers.repository'
+import { UsersInMemoryRepository } from '../../../src/repositories/user/UsersInMemory.repository'
 import { CreateUsersService } from '../../../src/service/users/CreateUsers.service'
 
 let usersRepository: IUsersRepository
@@ -7,7 +7,7 @@ let createUsersService: CreateUsersService
 
 describe('Create users service', () => {
   beforeEach(() => {
-    usersRepository = new UsersRepositoryInMemory()
+    usersRepository = new UsersInMemoryRepository()
     createUsersService = new CreateUsersService(usersRepository)
   })
 
