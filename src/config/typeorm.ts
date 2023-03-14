@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm'
 
-import { User } from '../entities/User'
+import { User } from '../entities/User.entity'
 import { Address } from '../entities/Address.entity'
 import { CarRide } from '../entities/CarRide.entity'
 

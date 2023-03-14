@@ -1,6 +1,6 @@
 import { object } from 'zod'
 import { IUsersDto } from '../../dto/IUsers.dto'
-import { User } from '../../entities/User'
+import { User } from '../../entities/User.entity'
 import { IUsersRepository } from './IUsersRepository'
 
 export class UsersRepositoryInMemory implements IUsersRepository {

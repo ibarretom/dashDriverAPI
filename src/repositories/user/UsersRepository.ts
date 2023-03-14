@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm'
 import { AppDataSource } from '../../config/typeorm'
 
-import { User } from '../../entities/User'
+import { User } from '../../entities/User.entity'
 
 import { IUsersDto } from '../../dto/IUsers.dto'
 import { IUsersRepository } from './IUsersRepository'
