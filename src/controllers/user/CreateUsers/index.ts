@@ -1,6 +1,6 @@
 import { UsersRepository } from '../../../repositories/user/Users.repository'
 import { CreateUsersService } from '../../../service/users/CreateUsers.service'
-import { CreateUsersController } from './CreateUsersController'
+import { CreateUsersController } from './CreateUsers.controller'
 
 const usersRepository = new UsersRepository()
 
