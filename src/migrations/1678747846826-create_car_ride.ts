@@ -34,14 +34,14 @@ export class createCarRide1678747846826 implements MigrationInterface {
           },
         ],
         foreignKeys: [
-          {
-            name: 'FKUserID',
-            referencedTableName: 'users',
-            referencedColumnNames: ['id'],
-            columnNames: ['user_id'],
-            onDelete: 'SET NULL',
-            onUpdate: 'SET NULL',
-          },
+          // {
+          //   name: 'FKUserID',
+          //   referencedTableName: 'users',
+          //   referencedColumnNames: ['id'],
+          //   columnNames: ['user_id'],
+          //   onDelete: 'SET NULL',
+          //   onUpdate: 'SET NULL',
+          // },
           {
             name: 'FKAddressID',
             referencedTableName: 'address',
