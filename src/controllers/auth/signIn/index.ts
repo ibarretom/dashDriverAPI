@@ -1,6 +1,6 @@
 import { UsersRepository } from '../../../repositories/user/Users.repository'
 import { SignInService } from '../../../service/auth/SignIn.service'
-import { SignInController } from './SignInController'
+import { SignInController } from './SignIn.controller'
 
 const usersRepository = new UsersRepository()
 

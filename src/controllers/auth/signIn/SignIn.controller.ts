@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { z } from 'zod'
-import { AppError } from '../../../errors/AppError'
+
 import { SignInService } from '../../../service/auth/SignIn.service'
 
 export class SignInController {
