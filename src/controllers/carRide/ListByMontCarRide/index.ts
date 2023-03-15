@@ -1,4 +1,4 @@
-import { CarRideRepository } from '../../../repositories/carRide/CarRide.respository'
+import { CarRideRepository } from '../../../repositories/carRide/CarRide.repository'
 
 import { ListByMonthCarRideService } from '../../../service/carRide/ListByMonthCarRide.service'
 import { ListByMonthCarRideController } from './ListByMonthCarRide.controller'

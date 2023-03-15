@@ -7,6 +7,7 @@ import { CarRide } from '../../entities/CarRide.entity'
 import { ICarRideDto } from '../../dto/carRide/ICarRide.dto'
 import { ICarRideRepository } from './ICarRideRepository'
 import { IMonthDateDto } from '../../dto/carRide/IMonthDate.dto'
+import { IDayDateDto } from '../../dto/carRide/IDayDate.dto'
 
 export class CarRideRepository implements ICarRideRepository {
   private repository: Repository<CarRide>
@@ -34,6 +35,26 @@ export class CarRideRepository implements ICarRideRepository {
         car_ride_date: Between(
           new Date(year, month, 0, 0, 0, 0, 0).toISOString(),
           new Date(year, month + 1, 0, 0, 0, 0).toISOString() // 0 pega o dia anterior ao ultimo do mes month + 1
+        ),
+      },
+    })
+
+    return car_rides
+  }
+
+  async findByDay(
+    { year, month, day }: IDayDateDto,
+    user_id: string
+  ): Promise<CarRide[]> {
+    const car_rides = await this.repository.find({
+      relations: {
+        address: true,
+      },
+      where: {
+        user_id,
+        car_ride_date: Between(
+          new Date(year, month, day, 0, 0, 0, 0).toISOString(),
+          new Date(year, month, day + 1, 0, 0, 0).toISOString()
         ),
       },
     })
