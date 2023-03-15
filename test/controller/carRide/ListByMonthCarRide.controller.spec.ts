@@ -34,6 +34,11 @@ describe('List by month car ride controller', () => {
 
     await connection.query(`
     INSERT INTO CAR_RIDE(id, user_id, amount, car_ride_date, address_id, created_at)
+    values('${randomUUID()}', '${randomUUID()}', 12.75, '2023-03-14 02:48:07.812', '${address_id}', now())
+    `)
+
+    await connection.query(`
+    INSERT INTO CAR_RIDE(id, user_id, amount, car_ride_date, address_id, created_at)
     values('${randomUUID()}', '${user_id}', 12.75, '2023-03-01 00:00:00', '${address_id}', now())
     `)
 
