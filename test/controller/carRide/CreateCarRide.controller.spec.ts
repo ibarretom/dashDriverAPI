@@ -19,7 +19,7 @@ describe('Create car ride', () => {
 
     await connection.query(`
     INSERT INTO USERS(id, name, email, password, photo_url, created_at, updated_at)
-    values('${id1}', 'admin', 'admin@admin.com', 'jC6htNCTAC7k0ktsvhJLu', null, now(), now())
+    values('${id1}', 'admin', 'admin@admin.com', '$2b$08$vTHAG8Xf6UH5QL84amgWue4sG.EsJaC/jC6htNCTAC7k0ktsvhJLu', null, now(), now())
     `)
 
     await connection.query(`
