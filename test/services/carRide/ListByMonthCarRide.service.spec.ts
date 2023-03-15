@@ -15,6 +15,7 @@ describe('List by month car ride', () => {
   it('Should be able to see all register car rides by month', async () => {
     const car_rides = await listByMonthCarRideService.execute({
       date: '2023-03-31T00:00:00Z',
+      user_id: 'test-user-1-id',
     })
 
     expect(car_rides).toHaveLength(3)
