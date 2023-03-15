@@ -7,10 +7,6 @@ export class CarRideController {
 
   async handle(request: Request, response: Response) {
     const carRideSchema = z.object({
-      user_id: z.string({
-        required_error: 'User id is required',
-        invalid_type_error: 'User id must be a uuid string',
-      }),
       address: z.object({
         zip_code: z
           .number({
@@ -47,10 +43,12 @@ export class CarRideController {
       }),
     })
 
-    const { user_id, address, amount, date } = carRideSchema.parse(request.body)
+    const user = request.user
+
+    const { address, amount, date } = carRideSchema.parse(request.body)
 
     const carRide = await this.createCarRideService.execute({
-      user_id,
+      user_id: user.id,
       address,
       amount,
       date,

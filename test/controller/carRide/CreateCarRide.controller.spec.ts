@@ -44,7 +44,6 @@ describe('Create car ride', () => {
     const created_car_ride = await request(app)
       .post('/carride')
       .send({
-        user_id: '6f03524c-07cd-4df2-8988-c25aabbf4bcf',
         amount: 13.75,
         address: {
           zip_code: 24445570,
@@ -60,6 +59,7 @@ describe('Create car ride', () => {
       })
 
     expect(created_car_ride.body.id).toBeDefined()
+    expect(created_car_ride.body.user_id).toBe(id1)
     expect(created_car_ride.body.address_id).toBeDefined()
     expect(created_car_ride.body.created_at).toBeDefined()
   })
@@ -75,7 +75,6 @@ describe('Create car ride', () => {
     const created_car_ride = await request(app)
       .post('/carride')
       .send({
-        user_id: '6f03524c-07cd-4df2-8988-c25aabbf4bcf',
         amount: 13.75,
         address: {
           zip_code: 24020071,
