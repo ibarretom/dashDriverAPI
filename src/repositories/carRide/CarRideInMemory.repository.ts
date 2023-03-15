@@ -5,6 +5,7 @@ import { IMonthDateDto } from '../../dto/carRide/IMonthDate.dto'
 import { CarRide } from '../../entities/CarRide.entity'
 
 import { randomUUID } from 'crypto'
+import { IDayDateDto } from '../../dto/carRide/IDayDate.dto'
 
 export class CarRideInMemoryRepository implements ICarRideRepository {
   private repository: CarRide[]
@@ -138,12 +139,31 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
     user_id: string
   ): Promise<CarRide[]> {
     const carRides = this.repository.filter((cr) => {
-      const date = cr.car_ride_date.split('T')[0]
+      const date = new Date(cr.car_ride_date)
 
-      const m = Number(date.split('-')[1]) - 1 // o getMonth começa de 0, portanto, tira 1 da ISO string
-      const y = Number(date.split('-')[0])
+      const m = date.getMonth()
+      const y = date.getFullYear()
 
       if (month == m && year == y && user_id == cr.user_id) {
+        return cr
+      }
+    })
+
+    return carRides
+  }
+
+  async findByDay(
+    { month, year, day }: IDayDateDto,
+    user_id: string
+  ): Promise<CarRide[]> {
+    const carRides = this.repository.filter((cr) => {
+      const date = new Date(cr.car_ride_date)
+
+      const d = date.getDate()
+      const m = date.getMonth()
+      const y = date.getFullYear()
+
+      if (month == m && year == y && day == d && user_id == cr.user_id) {
         return cr
       }
     })

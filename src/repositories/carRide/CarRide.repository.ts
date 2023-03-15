@@ -17,7 +17,9 @@ export class CarRideRepository implements ICarRideRepository {
   }
 
   async create(car_ride: ICarRideDto): Promise<CarRide> {
-    const createdCarRide = this.repository.create(car_ride)
+    const createdCarRide = this.repository.create({
+      ...car_ride,
+    })
 
     return await this.repository.save(createdCarRide)
   }
@@ -53,8 +55,8 @@ export class CarRideRepository implements ICarRideRepository {
       where: {
         user_id,
         car_ride_date: Between(
-          new Date(year, month, day, 0, 0, 0, 0).toISOString(),
-          new Date(year, month, day + 1, 0, 0, 0).toISOString()
+          new Date(year, month, day),
+          new Date(year, month, day, 23, 59, 59)
         ),
       },
     })
