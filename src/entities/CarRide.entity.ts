@@ -19,7 +19,7 @@ export class CarRide {
   amount: number
 
   @Column({ type: 'timestamp' })
-  car_ride_date: string
+  car_ride_date: string | Date
 
   @Column({ type: 'uuid', select: false })
   address_id: string
