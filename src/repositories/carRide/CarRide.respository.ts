@@ -1,4 +1,4 @@
-import { Repository } from 'typeorm'
+import { Between, Repository } from 'typeorm'
 
 import { AppDataSource } from '../../config/typeorm'
 
@@ -6,6 +6,7 @@ import { CarRide } from '../../entities/CarRide.entity'
 
 import { ICarRideDto } from '../../dto/carRide/ICarRide.dto'
 import { ICarRideRepository } from './ICarRideRepository'
+import { IMonthDateDto } from '../../dto/carRide/IMonthDate.dto'
 
 export class CarRideRepository implements ICarRideRepository {
   private repository: Repository<CarRide>
@@ -18,5 +19,18 @@ export class CarRideRepository implements ICarRideRepository {
     const createdCarRide = this.repository.create(car_ride)
 
     return await this.repository.save(createdCarRide)
+  }
+
+  async findByMonth({ year, month }: IMonthDateDto): Promise<CarRide[]> {
+    const car_rides = await this.repository.find({
+      where: {
+        car_ride_date: Between(
+          new Date(year, month, 0, 0, 0, 0, 0).toISOString(),
+          new Date(year, month + 1, 0, 0, 0, 0).toISOString() // 0 pega o dia anterior ao ultimo do mes month + 1
+        ),
+      },
+    })
+
+    return car_rides
   }
 }
