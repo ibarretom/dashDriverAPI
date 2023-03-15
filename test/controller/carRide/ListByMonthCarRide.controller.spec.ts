@@ -74,7 +74,7 @@ describe('List by month car ride controller', () => {
     const car_rides_response = await request(app)
       .get('/carRide/getByMonth')
       .send({
-        date: '2023-03-01T05:48:07.812Z',
+        iso_date: '2023-03-01T05:48:07.812Z',
       })
       .set({
         Authorization: `Bearer ${token}`,
@@ -94,7 +94,7 @@ describe('List by month car ride controller', () => {
     const car_rides_response_2 = await request(app)
       .get('/carRide/getByMonth')
       .send({
-        date: '2023-04-01T05:48:07.812Z',
+        iso_date: '2023-04-01T05:48:07.812Z',
       })
       .set({
         Authorization: `Bearer ${token}`,
@@ -114,7 +114,7 @@ describe('List by month car ride controller', () => {
     const car_rides_response_3 = await request(app)
       .get('/carRide/getByMonth')
       .send({
-        date: '2023-02-01T05:48:07.812Z',
+        iso_date: '2023-02-01T05:48:07.812Z',
       })
       .set({
         Authorization: `Bearer ${token}`,
@@ -134,7 +134,7 @@ describe('List by month car ride controller', () => {
     const car_rides_response = await request(app)
       .get('/carRide/getByMonth')
       .send({
-        date: '2023-02-01T05:48:07.812Z',
+        iso_date: '2023-02-01T05:48:07.812Z',
       })
       .set({
         Authorization: `Bearer ${token}`,

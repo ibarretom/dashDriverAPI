@@ -52,7 +52,7 @@ describe('Create car ride', () => {
           street: 'Rua Luiz Camões',
           neighborhood: 'Estrela do Norte',
         },
-        date: '2023-03-14T05:48:07.812Z',
+        iso_date: '2023-03-14T05:48:07.812Z',
       })
       .set({
         Authorization: `Bearer ${token}`,
@@ -83,7 +83,7 @@ describe('Create car ride', () => {
           street: 'R Lopes Trovão',
           neighborhood: 'Icaraí',
         },
-        date: '2023-03-14T05:48:07.812Z',
+        iso_date: '2023-03-14T05:48:07.812Z',
       })
       .set({
         Authorization: `Bearer ${token}`,

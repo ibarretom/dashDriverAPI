@@ -8,14 +8,14 @@ export class ListByMonthCarRideController {
 
   async handle(request: Request, response: Response): Promise<Response> {
     const listByMonthSchema = z.object({
-      date: z.string(),
+      iso_date: z.string(),
     })
 
     const { id: user_id } = request.user
-    const { date } = listByMonthSchema.parse(request.body)
+    const { iso_date } = listByMonthSchema.parse(request.body)
 
     const car_rides = await this.listByMonthCarRideService.execute({
-      date,
+      date: iso_date,
       user_id,
     })
 

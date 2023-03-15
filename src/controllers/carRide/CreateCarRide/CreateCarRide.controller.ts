@@ -37,7 +37,7 @@ export class CarRideController {
         required_error: 'Amount is required',
         invalid_type_error: 'Amount must be a number',
       }),
-      date: z.string({
+      iso_date: z.string({
         required_error: 'Date is required',
         invalid_type_error: 'Date must be a string',
       }),
@@ -45,13 +45,13 @@ export class CarRideController {
 
     const user = request.user
 
-    const { address, amount, date } = carRideSchema.parse(request.body)
+    const { address, amount, iso_date } = carRideSchema.parse(request.body)
 
     const carRide = await this.createCarRideService.execute({
       user_id: user.id,
       address,
       amount,
-      date,
+      date: iso_date,
     })
 
     return response.status(201).json(carRide)
