@@ -4,7 +4,7 @@ import { AppDataSource } from '../../config/typeorm'
 
 import { CarRide } from '../../entities/CarRide.entity'
 
-import { ICarRideDto } from '../../dto/ICarRide.dto'
+import { ICarRideDto } from '../../dto/carRide/ICarRide.dto'
 import { ICarRideRepository } from './ICarRideRepository'
 
 export class CarRideRepository implements ICarRideRepository {

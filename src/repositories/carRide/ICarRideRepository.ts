@@ -1,4 +1,5 @@
-import { ICarRideDto } from '../../dto/ICarRide.dto'
+import { ICarRideDto } from '../../dto/carRide/ICarRide.dto'
+
 import { CarRide } from '../../entities/CarRide.entity'
 
 export interface ICarRideRepository {

@@ -1,6 +1,7 @@
-import { ICarRideDto } from '../../dto/ICarRide.dto'
-import { CarRide } from '../../entities/CarRide.entity'
+import { ICarRideDto } from '../../dto/carRide/ICarRide.dto'
 import { ICarRideRepository } from './ICarRideRepository'
+
+import { CarRide } from '../../entities/CarRide.entity'
 
 export class CarRideInMemoryRepository implements ICarRideRepository {
   private repository: CarRide[]
