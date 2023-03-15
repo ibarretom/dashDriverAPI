@@ -11,9 +11,13 @@ export class ListByMonthCarRideController {
       date: z.string(),
     })
 
+    const { id: user_id } = request.user
     const { date } = listByMonthSchema.parse(request.body)
 
-    const car_rides = await this.listByMonthCarRideService.execute({ date })
+    const car_rides = await this.listByMonthCarRideService.execute({
+      date,
+      user_id,
+    })
 
     return response.status(200).json(car_rides)
   }

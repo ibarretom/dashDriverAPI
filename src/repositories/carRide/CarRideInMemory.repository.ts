@@ -13,7 +13,7 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
     this.repository = [
       {
         id: 'test-id-0',
-        user_id: randomUUID(),
+        user_id: 'test-user-1-id',
         address_id: randomUUID(),
         amount: 12.75,
         car_ride_date: '2023-03-01T00:00:00Z',
@@ -21,7 +21,7 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
       },
       {
         id: 'test-id-1',
-        user_id: randomUUID(),
+        user_id: 'test-user-1-id',
         address_id: randomUUID(),
         amount: 12.75,
         car_ride_date: '2023-03-31T00:00:00Z',
@@ -29,7 +29,7 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
       },
       {
         id: 'test-id-2',
-        user_id: randomUUID(),
+        user_id: 'test-user-1-id',
         address_id: randomUUID(),
         amount: 12.75,
         car_ride_date: '2023-02-28T00:00:00Z',
@@ -37,7 +37,7 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
       },
       {
         id: 'test-id-3',
-        user_id: randomUUID(),
+        user_id: 'test-user-1-id',
         address_id: randomUUID(),
         amount: 12.75,
         car_ride_date: '2023-04-01T00:00:00Z',
@@ -45,7 +45,15 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
       },
       {
         id: 'test-id-4',
-        user_id: randomUUID(),
+        user_id: 'test-user-1-id',
+        address_id: randomUUID(),
+        amount: 12.75,
+        car_ride_date: '2023-03-14T02:48:07.812',
+        created_at: new Date().toISOString(),
+      },
+      {
+        id: 'test-id-4',
+        user_id: 'test-user-2-id',
         address_id: randomUUID(),
         amount: 12.75,
         car_ride_date: '2023-03-14T02:48:07.812',
@@ -71,14 +79,17 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
     return created_car_ride
   }
 
-  async findByMonth({ month, year }: IMonthDateDto): Promise<CarRide[]> {
+  async findByMonth(
+    { month, year }: IMonthDateDto,
+    user_id: string
+  ): Promise<CarRide[]> {
     const carRides = this.repository.filter((cr) => {
       const date = cr.car_ride_date.split('T')[0]
 
       const m = Number(date.split('-')[1]) - 1 // o getMonth começa de 0, portanto, tira 1 da ISO string
       const y = Number(date.split('-')[0])
 
-      if (month == m && year == y) {
+      if (month == m && year == y && user_id == cr.user_id) {
         return cr
       }
     })

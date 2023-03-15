@@ -4,16 +4,20 @@ import { ICarRideRepository } from '../../repositories/carRide/ICarRideRepositor
 
 type Request = {
   date: string
+  user_id: string
 }
 
 export class ListByMonthCarRideService {
   constructor(private carRideRepository: ICarRideRepository) {}
 
-  async execute({ date }: Request): Promise<CarRide[]> {
+  async execute({ date, user_id }: Request): Promise<CarRide[]> {
     const month = new Date(date).getMonth()
     const year = new Date(date).getFullYear()
 
-    const rides = await this.carRideRepository.findByMonth({ year, month })
+    const rides = await this.carRideRepository.findByMonth(
+      { year, month },
+      user_id
+    )
 
     return rides
   }

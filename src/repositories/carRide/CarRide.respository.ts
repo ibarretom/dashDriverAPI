@@ -21,9 +21,13 @@ export class CarRideRepository implements ICarRideRepository {
     return await this.repository.save(createdCarRide)
   }
 
-  async findByMonth({ year, month }: IMonthDateDto): Promise<CarRide[]> {
+  async findByMonth(
+    { year, month }: IMonthDateDto,
+    user_id: string
+  ): Promise<CarRide[]> {
     const car_rides = await this.repository.find({
       where: {
+        user_id,
         car_ride_date: Between(
           new Date(year, month, 0, 0, 0, 0, 0).toISOString(),
           new Date(year, month + 1, 0, 0, 0, 0).toISOString() // 0 pega o dia anterior ao ultimo do mes month + 1

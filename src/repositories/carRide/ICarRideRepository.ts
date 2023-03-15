@@ -6,5 +6,5 @@ import { CarRide } from '../../entities/CarRide.entity'
 export interface ICarRideRepository {
   create(car_ride: ICarRideDto): Promise<CarRide>
 
-  findByMonth(date: IMonthDateDto): Promise<CarRide[]>
+  findByMonth(date: IMonthDateDto, user_id: string): Promise<CarRide[]>
 }
