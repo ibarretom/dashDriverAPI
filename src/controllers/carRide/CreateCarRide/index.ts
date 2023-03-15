@@ -1,6 +1,6 @@
-import { AddressRepository } from '../../repositories/address/Address.repository'
-import { CarRideRepository } from '../../repositories/carRide/CarRide.respository'
-import { CreateCarRideService } from '../../service/carRide/CreateCarRide.service'
+import { AddressRepository } from '../../../repositories/address/Address.repository'
+import { CarRideRepository } from '../../../repositories/carRide/CarRide.respository'
+import { CreateCarRideService } from '../../../service/carRide/CreateCarRide.service'
 
 import { CarRideController } from './CreateCarRide.controller'
 

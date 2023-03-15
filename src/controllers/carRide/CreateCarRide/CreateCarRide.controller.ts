@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { z } from 'zod'
-import { CreateCarRideService } from '../../service/carRide/CreateCarRide.service'
+import { CreateCarRideService } from '../../../service/carRide/CreateCarRide.service'
 
 export class CarRideController {
   constructor(private createCarRideService: CreateCarRideService) {}
