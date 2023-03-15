@@ -129,4 +129,23 @@ describe('List by month car ride controller', () => {
       expect(month).toBe(2)
     })
   })
+
+  it('Should be able to see the completed address when querying a ride', async () => {
+    const car_rides_response = await request(app)
+      .get('/carRide/getByMonth')
+      .send({
+        date: '2023-02-01T05:48:07.812Z',
+      })
+      .set({
+        Authorization: `Bearer ${token}`,
+      })
+
+    const car_rides = car_rides_response.body
+
+    expect(car_rides).toHaveLength(1)
+
+    expect(car_rides[0]).toHaveProperty('address')
+    expect(car_rides[0]).toHaveProperty('address.id')
+    expect(car_rides[0]).toHaveProperty('address.created_at')
+  })
 })

@@ -18,6 +18,15 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
         amount: 12.75,
         car_ride_date: '2023-03-01T00:00:00Z',
         created_at: new Date().toISOString(),
+        address: {
+          id: 'test-id',
+          zip_code: 24445570,
+          federated_unit: 'RJ',
+          city: 'São Gonçalo',
+          street: 'Rua Luiz Camões',
+          neighborhood: 'Estrela do Norte',
+          created_at: new Date().toISOString(),
+        },
       },
       {
         id: 'test-id-1',
@@ -26,6 +35,15 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
         amount: 12.75,
         car_ride_date: '2023-03-31T00:00:00Z',
         created_at: new Date().toISOString(),
+        address: {
+          id: 'test-id',
+          zip_code: 24445570,
+          federated_unit: 'RJ',
+          city: 'São Gonçalo',
+          street: 'Rua Luiz Camões',
+          neighborhood: 'Estrela do Norte',
+          created_at: new Date().toISOString(),
+        },
       },
       {
         id: 'test-id-2',
@@ -34,6 +52,15 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
         amount: 12.75,
         car_ride_date: '2023-02-28T00:00:00Z',
         created_at: new Date().toISOString(),
+        address: {
+          id: 'test-id',
+          zip_code: 24445570,
+          federated_unit: 'RJ',
+          city: 'São Gonçalo',
+          street: 'Rua Luiz Camões',
+          neighborhood: 'Estrela do Norte',
+          created_at: new Date().toISOString(),
+        },
       },
       {
         id: 'test-id-3',
@@ -42,6 +69,15 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
         amount: 12.75,
         car_ride_date: '2023-04-01T00:00:00Z',
         created_at: new Date().toISOString(),
+        address: {
+          id: 'test-id',
+          zip_code: 24445570,
+          federated_unit: 'RJ',
+          city: 'São Gonçalo',
+          street: 'Rua Luiz Camões',
+          neighborhood: 'Estrela do Norte',
+          created_at: new Date().toISOString(),
+        },
       },
       {
         id: 'test-id-4',
@@ -50,6 +86,15 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
         amount: 12.75,
         car_ride_date: '2023-03-14T02:48:07.812',
         created_at: new Date().toISOString(),
+        address: {
+          id: 'test-id',
+          zip_code: 24445570,
+          federated_unit: 'RJ',
+          city: 'São Gonçalo',
+          street: 'Rua Luiz Camões',
+          neighborhood: 'Estrela do Norte',
+          created_at: new Date().toISOString(),
+        },
       },
       {
         id: 'test-id-4',
@@ -58,6 +103,15 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
         amount: 12.75,
         car_ride_date: '2023-03-14T02:48:07.812',
         created_at: new Date().toISOString(),
+        address: {
+          id: 'test-id',
+          zip_code: 24445570,
+          federated_unit: 'RJ',
+          city: 'São Gonçalo',
+          street: 'Rua Luiz Camões',
+          neighborhood: 'Estrela do Norte',
+          created_at: new Date().toISOString(),
+        },
       },
     ]
   }

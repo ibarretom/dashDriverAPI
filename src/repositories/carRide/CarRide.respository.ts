@@ -26,6 +26,9 @@ export class CarRideRepository implements ICarRideRepository {
     user_id: string
   ): Promise<CarRide[]> {
     const car_rides = await this.repository.find({
+      relations: {
+        address: true,
+      },
       where: {
         user_id,
         car_ride_date: Between(
