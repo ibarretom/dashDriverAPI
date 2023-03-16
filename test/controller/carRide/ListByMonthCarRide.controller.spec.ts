@@ -27,42 +27,80 @@ describe('List by month car ride controller', () => {
     values('${address_id}', 24020071, 'RJ', 'Niterói', 'Icaraí', 'R Lopes Trovão', now())
     `)
 
-    await connection.query(`
-    INSERT INTO CAR_RIDE(id, user_id, amount, car_ride_date, address_id, created_at)
-    values('${randomUUID()}', '${user_id}', 12.75, '2023-03-14 02:48:07.812', '${address_id}', now())
-    `)
-
-    await connection.query(`
-    INSERT INTO CAR_RIDE(id, user_id, amount, car_ride_date, address_id, created_at)
-    values('${randomUUID()}', '${randomUUID()}', 12.75, '2023-03-14 02:48:07.812', '${address_id}', now())
-    `)
-
-    await connection.query(`
-    INSERT INTO CAR_RIDE(id, user_id, amount, car_ride_date, address_id, created_at)
-    values('${randomUUID()}', '${user_id}', 12.75, '2023-03-01 00:00:00', '${address_id}', now())
-    `)
-
-    await connection.query(`
-    INSERT INTO CAR_RIDE(id, user_id, amount, car_ride_date, address_id, created_at)
-    values('${randomUUID()}', '${user_id}', 12.75, '2023-03-31 00:00:00', '${address_id}', now())
-    `)
-
-    await connection.query(`
-    INSERT INTO CAR_RIDE(id, user_id, amount, car_ride_date, address_id, created_at)
-    values('${randomUUID()}', '${user_id}', 12.75, '2023-02-28 00:00:00', '${address_id}', now())
-    `)
-
-    await connection.query(`
-    INSERT INTO CAR_RIDE(id, user_id, amount, car_ride_date, address_id, created_at)
-    values('${randomUUID()}', '${user_id}', 12.75, '2023-04-01 00:00:00', '${address_id}', now())
-    `)
-
     const auth_response = await request(app).post('/auth/signin').send({
       email: 'admin@admin.com',
       password: '12345678',
     })
 
     token = auth_response.body.token
+
+    await request(app)
+      .post('/carride')
+      .send({
+        amount: 13.75,
+        address: {
+          zip_code: 24020071,
+          federated_unit: 'RJ',
+          city: 'Niterói',
+          street: 'R. Lopes Trovão',
+          neighborhood: 'Icaraí',
+        },
+        iso_date: new Date('2023-02-28 23:59:59').toISOString(),
+      })
+      .set({
+        Authorization: `Bearer ${token}`,
+      })
+
+    await request(app)
+      .post('/carride')
+      .send({
+        amount: 13.75,
+        address: {
+          zip_code: 24020071,
+          federated_unit: 'RJ',
+          city: 'Niterói',
+          street: 'R. Lopes Trovão',
+          neighborhood: 'Icaraí',
+        },
+        iso_date: new Date('2023-03-1 00:00:00').toISOString(),
+      })
+      .set({
+        Authorization: `Bearer ${token}`,
+      })
+
+    await request(app)
+      .post('/carride')
+      .send({
+        amount: 13.75,
+        address: {
+          zip_code: 24020071,
+          federated_unit: 'RJ',
+          city: 'Niterói',
+          street: 'R. Lopes Trovão',
+          neighborhood: 'Icaraí',
+        },
+        iso_date: new Date('2023-03-31 23:59:59').toISOString(),
+      })
+      .set({
+        Authorization: `Bearer ${token}`,
+      })
+
+    await request(app)
+      .post('/carride')
+      .send({
+        amount: 13.75,
+        address: {
+          zip_code: 24020071,
+          federated_unit: 'RJ',
+          city: 'Niterói',
+          street: 'R. Lopes Trovão',
+          neighborhood: 'Icaraí',
+        },
+        iso_date: new Date('2023-04-1 00:00:00').toISOString(),
+      })
+      .set({
+        Authorization: `Bearer ${token}`,
+      })
   })
 
   afterAll(async () => {
@@ -74,7 +112,7 @@ describe('List by month car ride controller', () => {
     const car_rides_response = await request(app)
       .get('/carRide/getByMonth')
       .send({
-        iso_date: '2023-03-01T05:48:07.812Z',
+        iso_date: new Date('2023-03-2').toISOString(),
       })
       .set({
         Authorization: `Bearer ${token}`,
@@ -82,7 +120,7 @@ describe('List by month car ride controller', () => {
 
     const car_rides = car_rides_response.body
 
-    expect(car_rides).toHaveLength(3)
+    expect(car_rides).toHaveLength(2)
 
     car_rides.forEach((cr: CarRide) => {
       const month = new Date(cr.car_ride_date).getMonth() + 1
@@ -94,7 +132,7 @@ describe('List by month car ride controller', () => {
     const car_rides_response_2 = await request(app)
       .get('/carRide/getByMonth')
       .send({
-        iso_date: '2023-04-01T05:48:07.812Z',
+        iso_date: new Date('2023-04-2').toISOString(),
       })
       .set({
         Authorization: `Bearer ${token}`,
@@ -114,7 +152,7 @@ describe('List by month car ride controller', () => {
     const car_rides_response_3 = await request(app)
       .get('/carRide/getByMonth')
       .send({
-        iso_date: '2023-02-01T05:48:07.812Z',
+        iso_date: new Date('2023-02-2').toISOString(),
       })
       .set({
         Authorization: `Bearer ${token}`,
@@ -134,7 +172,7 @@ describe('List by month car ride controller', () => {
     const car_rides_response = await request(app)
       .get('/carRide/getByMonth')
       .send({
-        iso_date: '2023-02-01T05:48:07.812Z',
+        iso_date: new Date('2023-02-2').toISOString(),
       })
       .set({
         Authorization: `Bearer ${token}`,

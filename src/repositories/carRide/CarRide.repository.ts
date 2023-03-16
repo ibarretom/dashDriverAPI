@@ -35,8 +35,8 @@ export class CarRideRepository implements ICarRideRepository {
       where: {
         user_id,
         car_ride_date: Between(
-          new Date(year, month, 0, 0, 0, 0, 0).toISOString(),
-          new Date(year, month + 1, 0, 0, 0, 0).toISOString() // 0 pega o dia anterior ao ultimo do mes month + 1
+          new Date(year, month, 1, 0, 0, 0, 0),
+          new Date(year, month + 1, 0, 23, 59, 59) // 0 pega o dia anterior ao ultimo do mes month + 1
         ),
       },
     })
