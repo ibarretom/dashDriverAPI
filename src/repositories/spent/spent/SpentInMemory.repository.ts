@@ -3,11 +3,53 @@ import { Spent } from '../../../entities/Spent.entity'
 import { ISpentDto } from '../../../dto/spent/ISpentDto'
 import { ISpentRepository } from './ISpent.repository'
 import { AppError } from '../../../errors/AppError'
+import { IMonthDateDto } from '../../../dto/carRide/IMonthDate.dto'
 
 export class SpentInMemoryRepository implements ISpentRepository {
   private repository: Spent[]
   constructor() {
-    this.repository = []
+    this.repository = [
+      {
+        id: 'test-id-1',
+        user_id: 'user-1-test-id',
+        spent_type: 'aluguel_de_carro',
+        spent_date: '2023-04-01T03:00:00.000Z',
+        description: 'description',
+        created_at: '2023-03-16T09:15:55.827Z',
+      },
+      {
+        id: 'test-id-2',
+        user_id: 'user-1-test-id',
+        spent_type: 'aluguel_de_carro',
+        spent_date: '2023-05-01T02:59:59.000Z',
+        description: 'description',
+        created_at: '2023-03-16T09:15:55.827Z',
+      },
+      {
+        id: 'test-id-3',
+        user_id: 'user-1-test-id',
+        spent_type: 'aluguel_de_carro',
+        spent_date: '2023-04-01T02:59:59.000Z',
+        description: 'description',
+        created_at: '2023-03-16T09:15:55.827Z',
+      },
+      {
+        id: 'test-id-4',
+        user_id: 'user-1-test-id',
+        spent_type: 'aluguel_de_carro',
+        spent_date: '2023-05-01T03:00:00.000Z',
+        description: 'description',
+        created_at: '2023-03-16T09:15:55.827Z',
+      },
+      {
+        id: 'test-id-2',
+        user_id: 'user-2-test-id',
+        spent_type: 'aluguel_de_carro',
+        spent_date: '2023-05-01T02:59:59.000Z',
+        description: 'description',
+        created_at: '2023-03-16T09:15:55.827Z',
+      },
+    ]
   }
 
   async create(spent: ISpentDto): Promise<Spent> {
@@ -31,5 +73,21 @@ export class SpentInMemoryRepository implements ISpentRepository {
     this.repository.push(created_spent)
 
     return created_spent
+  }
+
+  async findByMonth(
+    { month, year }: IMonthDateDto,
+    user_id: string
+  ): Promise<Spent[]> {
+    const spent = this.repository.filter((s) => {
+      const m = new Date(s.spent_date).getMonth()
+      const y = new Date(s.spent_date).getFullYear()
+
+      if (m == month && y == year && s.user_id == user_id) {
+        return s
+      }
+    })
+
+    return spent
   }
 }
