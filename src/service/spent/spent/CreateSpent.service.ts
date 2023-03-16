@@ -1,4 +1,4 @@
-import { Spent, SpentEnum } from '../../../entities/Spent.entity'
+import { Spent } from '../../../entities/Spent.entity'
 
 import { ISpentRepository } from '../../../repositories/spent/spent/ISpent.repository'
 
