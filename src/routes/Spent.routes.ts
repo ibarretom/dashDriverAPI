@@ -1,8 +1,9 @@
 import { Router } from 'express'
-import { createFuelController } from '../controllers/spent/fuel/CreateFuel'
 
+import { createFuelController } from '../controllers/spent/fuel/CreateFuel'
 import { createSpentController } from '../controllers/spent/spent/CreateSpent'
 import { listByMonthSpentController } from '../controllers/spent/spent/ListByMonthSpent'
+import { listByMonthFuelController } from '../controllers/spent/fuel/ListByMonthFuel'
 
 import { EnsureAuthenticated } from '../middleware/EnsureAuthenticated'
 
@@ -18,6 +19,10 @@ SpentRouter.get('/getByMonth', EnsureAuthenticated, async (req, res) => {
 
 SpentRouter.post('/fuel', EnsureAuthenticated, async (req, res) => {
   await createFuelController.handle(req, res)
+})
+
+SpentRouter.get('/fuel/getByMonth', EnsureAuthenticated, async (req, res) => {
+  await listByMonthFuelController.handle(req, res)
 })
 
 export { SpentRouter }
