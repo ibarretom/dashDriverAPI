@@ -14,6 +14,9 @@ export class Spent {
   })
   spent_type: string
 
+  @Column({ type: 'float' })
+  amount: number
+
   @Column({ type: 'timestamp' })
   spent_date: string | Date
 
