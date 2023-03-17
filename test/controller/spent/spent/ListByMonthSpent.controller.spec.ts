@@ -40,6 +40,7 @@ describe('List spent by month controller', () => {
       .post('/spent')
       .send({
         spent_type: 'aluguel_de_carro',
+        amount: 12.75,
         spent_date: new Date('2023-03-30 23:59:59').toISOString(),
         description: 'description',
       })
@@ -51,6 +52,7 @@ describe('List spent by month controller', () => {
       .post('/spent')
       .send({
         spent_type: 'manutencao',
+        amount: 12.75,
         spent_date: new Date('2023-04-01 00:00:00').toISOString(),
         description: 'description',
       })
@@ -62,6 +64,7 @@ describe('List spent by month controller', () => {
       .post('/spent')
       .send({
         spent_type: 'almoco',
+        amount: 12.75,
         spent_date: new Date('2023-04-01 23:59:59').toISOString(),
         description: 'description',
       })
@@ -73,6 +76,7 @@ describe('List spent by month controller', () => {
       .post('/spent')
       .send({
         spent_type: 'outros',
+        amount: 12.75,
         spent_date: new Date('2023-05-01 00:00:00').toISOString(),
         description: 'description',
       })
@@ -91,6 +95,7 @@ describe('List spent by month controller', () => {
       .post('/spent')
       .send({
         spent_type: 'manutencao',
+        amount: 12.75,
         spent_date: new Date('2023-04-01 00:00:00').toISOString(),
         description: 'description',
       })

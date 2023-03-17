@@ -8,18 +8,20 @@ export class CreateSpentController {
   async handle(request: Request, response: Response): Promise<Response> {
     const spentSchema = z.object({
       spent_type: z.string(),
+      amount: z.number().positive(),
       spent_date: z.string(),
       description: z.string().optional(),
     })
 
     const { id: user_id } = request.user
-    const { spent_type, spent_date, description } = spentSchema.parse(
+    const { spent_type, amount, spent_date, description } = spentSchema.parse(
       request.body
     )
 
     const spent = await this.createSpentService.execute({
       user_id,
       spent_type,
+      amount,
       spent_date,
       description,
     })

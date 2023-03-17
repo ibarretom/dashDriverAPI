@@ -38,6 +38,7 @@ describe('Create spent controller', () => {
       .post('/spent')
       .send({
         spent_type: 'aluguel_de_carro',
+        amount: 12.75,
         spent_date: '2023-03-03T03:00:00.000Z',
         description: 'description',
       })
@@ -53,6 +54,7 @@ describe('Create spent controller', () => {
       .post('/spent')
       .send({
         spent_type: 'manutencao',
+        amount: 12.75,
         spent_date: '2023-03-03T03:00:00.000Z',
         description: 'description',
       })
@@ -68,6 +70,7 @@ describe('Create spent controller', () => {
       .post('/spent')
       .send({
         spent_type: 'almoco',
+        amount: 12.75,
         spent_date: '2023-03-03T03:00:00.000Z',
         description: 'description',
       })
@@ -83,6 +86,7 @@ describe('Create spent controller', () => {
       .post('/spent')
       .send({
         spent_type: 'outros',
+        amount: 12.75,
         spent_date: '2023-03-03T03:00:00.000Z',
         description: 'description',
       })
@@ -100,6 +104,7 @@ describe('Create spent controller', () => {
       .post('/spent')
       .send({
         spent_type: 'wrong_enum',
+        amount: 12.75,
         spent_date: '2023-03-03T03:00:00.000Z',
         description: 'description',
       })
