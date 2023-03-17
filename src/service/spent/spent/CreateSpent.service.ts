@@ -5,6 +5,7 @@ import { ISpentRepository } from '../../../repositories/spent/spent/ISpent.repos
 type Request = {
   user_id: string
   spent_type: string
+  amount: number
   spent_date: string
   description?: string
 }

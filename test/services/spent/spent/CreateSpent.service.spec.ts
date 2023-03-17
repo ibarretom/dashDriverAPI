@@ -14,6 +14,7 @@ describe('Create spent service', () => {
     const spent = await createSpentService.execute({
       user_id: 'user-id',
       spent_date: '2023-03-03T03:00:00.000Z',
+      amount: 12.65,
       spent_type: 'aluguel_de_carro',
       description: 'description',
     })
@@ -23,6 +24,7 @@ describe('Create spent service', () => {
     const spent_2 = await createSpentService.execute({
       user_id: 'user-id',
       spent_date: '2023-03-03T03:00:00.000Z',
+      amount: 12.65,
       spent_type: 'manutencao',
       description: 'description',
     })
@@ -32,6 +34,7 @@ describe('Create spent service', () => {
     const spent_3 = await createSpentService.execute({
       user_id: 'user-id',
       spent_date: '2023-03-03T03:00:00.000Z',
+      amount: 12.65,
       spent_type: 'almoco',
       description: 'description',
     })
@@ -41,6 +44,7 @@ describe('Create spent service', () => {
     const spent_4 = await createSpentService.execute({
       user_id: 'user-id',
       spent_date: '2023-03-03T03:00:00.000Z',
+      amount: 12.65,
       spent_type: 'outros',
       description: 'description',
     })
@@ -53,6 +57,7 @@ describe('Create spent service', () => {
       await createSpentService.execute({
         user_id: 'user-id',
         spent_date: '2023-03-03T03:00:00.000Z',
+        amount: 12.65,
         spent_type: 'other_type',
         description: 'description',
       })
