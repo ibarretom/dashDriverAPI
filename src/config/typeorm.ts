@@ -11,6 +11,7 @@ import { createAddress1678744670794 } from '../migrations/1678744670794-create_a
 import { createCarRide1678747846826 } from '../migrations/1678747846826-create_car_ride'
 import { createSpent1678929364763 } from '../migrations/1678929364763-create_spent'
 import { createFuelSpent1679010899517 } from '../migrations/1679010899517-create_fuel_spent'
+import { alterSpentAddColumnAmount1679018157935 } from '../migrations/1679018157935-alter_spent_add_column_amount'
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -26,6 +27,7 @@ const AppDataSource = new DataSource({
     createCarRide1678747846826,
     createSpent1678929364763,
     createFuelSpent1679010899517,
+    alterSpentAddColumnAmount1679018157935,
   ],
   synchronize: true,
   logging: false,
