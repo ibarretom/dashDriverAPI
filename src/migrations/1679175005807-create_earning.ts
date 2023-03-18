@@ -1,0 +1,40 @@
+import { MigrationInterface, QueryRunner, Table } from 'typeorm'
+
+export class createEarning1679175005807 implements MigrationInterface {
+  public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.createTable(
+      new Table({
+        name: 'earning',
+        columns: [
+          {
+            name: 'id',
+            type: 'uuid',
+            isPrimary: true,
+          },
+          {
+            name: 'user_id',
+            type: 'uuid',
+          },
+          {
+            name: 'amount',
+            type: 'float',
+          },
+          {
+            name: 'earning_date',
+            type: 'timestamp',
+          },
+          {
+            name: 'created_at',
+            type: 'timestamp',
+            default: 'now()',
+          },
+        ],
+      }),
+      true
+    )
+  }
+
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable('earning')
+  }
+}
