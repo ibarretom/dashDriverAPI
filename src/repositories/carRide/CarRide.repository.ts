@@ -24,6 +24,16 @@ export class CarRideRepository implements ICarRideRepository {
     return await this.repository.save(createdCarRide)
   }
 
+  async findAll(): Promise<CarRide[]> {
+    const car_rides = await this.repository.find({
+      relations: {
+        address: true,
+      },
+    })
+
+    return car_rides
+  }
+
   async findByMonth(
     { year, month }: IMonthDateDto,
     user_id: string
