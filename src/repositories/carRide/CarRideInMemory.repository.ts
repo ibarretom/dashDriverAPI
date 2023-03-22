@@ -114,6 +114,40 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
           created_at: new Date().toISOString(),
         },
       },
+      {
+        id: 'test-id-5',
+        user_id: 'user-3-test-id',
+        address_id: randomUUID(),
+        amount: 12.75,
+        car_ride_date: new Date(2022, 5, 1).toISOString(),
+        created_at: new Date().toISOString(),
+        address: {
+          id: 'test-id',
+          zip_code: 24445570,
+          federated_unit: 'RJ',
+          city: 'São Gonçalo',
+          street: 'Rua Luiz Camões',
+          neighborhood: 'Estrela do Norte',
+          created_at: new Date().toISOString(),
+        },
+      },
+      {
+        id: 'test-id-6',
+        user_id: 'user-3-test-id',
+        address_id: randomUUID(),
+        amount: 13.75,
+        car_ride_date: new Date(2022, 5, 2).toISOString(),
+        created_at: new Date().toISOString(),
+        address: {
+          id: 'test-id',
+          zip_code: 24445570,
+          federated_unit: 'RJ',
+          city: 'São Gonçalo',
+          street: 'Rua Luiz Camões',
+          neighborhood: 'Estrela do Norte',
+          created_at: new Date().toISOString(),
+        },
+      },
     ]
   }
 

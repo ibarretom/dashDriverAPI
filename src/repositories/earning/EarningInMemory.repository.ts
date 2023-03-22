@@ -43,6 +43,20 @@ export class EarningInMemoryRepository implements IEarningRepository {
         earning_date: new Date(2023, 3, 0, 23, 59, 59).toISOString(),
         created_at: new Date(Date.now()),
       },
+      {
+        id: 'test-id-6',
+        user_id: 'user-3-test-id',
+        amount: 50,
+        earning_date: new Date(2022, 5, 2).toISOString(),
+        created_at: new Date(Date.now()),
+      },
+      {
+        id: 'test-id-7',
+        user_id: 'user-3-test-id',
+        amount: 40,
+        earning_date: new Date(2022, 5, 2).toISOString(),
+        created_at: new Date(Date.now()),
+      },
     ]
   }
 

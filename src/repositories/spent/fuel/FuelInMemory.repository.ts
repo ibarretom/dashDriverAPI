@@ -54,6 +54,24 @@ export class FuelInMemoryRepository implements IFuelRepository {
         fuel_date: new Date(2023, 4, 0, 23, 59, 59).toISOString(),
         created_at: new Date(Date.now()),
       },
+      {
+        id: 'test-id-6',
+        user_id: 'user-3-test-id',
+        type: 'gasolina',
+        liters: 4.5,
+        amount: 20.32,
+        fuel_date: new Date(2022, 5, 2).toISOString(),
+        created_at: new Date(Date.now()),
+      },
+      {
+        id: 'test-id-7',
+        user_id: 'user-3-test-id',
+        type: 'gas_natural',
+        liters: 4.5,
+        amount: 20.32,
+        fuel_date: new Date(2022, 5, 2).toISOString(),
+        created_at: new Date(Date.now()),
+      },
     ]
   }
 
