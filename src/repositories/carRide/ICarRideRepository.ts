@@ -12,4 +12,6 @@ export interface ICarRideRepository {
   findByDay(date: IDayDateDto, user_id: string): Promise<CarRide[]>
 
   findAll(): Promise<CarRide[]>
+
+  findAllByMonth(date: IMonthDateDto): Promise<CarRide[]>
 }

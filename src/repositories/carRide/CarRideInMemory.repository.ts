@@ -245,6 +245,21 @@ export class CarRideInMemoryRepository implements ICarRideRepository {
     return carRides
   }
 
+  async findAllByMonth({ year, month }: IMonthDateDto): Promise<CarRide[]> {
+    const carRides = this.repository.filter((cr) => {
+      const date = new Date(cr.car_ride_date)
+
+      const m = date.getMonth()
+      const y = date.getFullYear()
+
+      if (month == m && year == y) {
+        return cr
+      }
+    })
+
+    return carRides
+  }
+
   async findByMonth(
     { month, year }: IMonthDateDto,
     user_id: string
