@@ -19,9 +19,8 @@ export class MostVisitedByMonthAddressService {
       year,
     })
 
-    let most_visited = this.objectToArray(
-      this.calculateMostVisitedPlaces(car_rides)
-    )
+    let most_visited = this.calculateMostVisitedPlaces(car_rides)
+
     most_visited = this.getFiveMostVisited(most_visited)
 
     return most_visited
