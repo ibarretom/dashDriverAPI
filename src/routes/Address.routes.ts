@@ -2,7 +2,7 @@ import { Router } from 'express'
 
 import { EnsureAuthenticated } from '../middleware/EnsureAuthenticated'
 
-import { mostVisitedAddressController } from '../controllers/address/MostVisistedAddress'
+import { mostVisitedAddressController } from '../controllers/address/MostVisitedAddress'
 import { mostVisitedByMonthAddressController } from '../controllers/address/MostVisitedByMonthAddress'
 import { mostVisitedByDayAddressController } from '../controllers/address/MostVisitedByDayAddress'
 
