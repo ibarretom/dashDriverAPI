@@ -19,6 +19,18 @@ export class UsersRepository implements IUsersRepository {
     return created_user
   }
 
+  async update(user: User): Promise<User> {
+    const uploaded_user = await this.repository.save(user)
+
+    return uploaded_user
+  }
+
+  async findByID(id: string): Promise<User | null> {
+    const user = await this.repository.findOne({ where: { id } })
+
+    return user
+  }
+
   async findByEmail(email: string): Promise<User | null> {
     const user = await this.repository.findOne({ where: { email } })
 

@@ -19,6 +19,7 @@ export class UsersInMemoryRepository implements IUsersRepository {
       },
     ]
   }
+
   async create(user: IUsersDto): Promise<User> {
     const userAlreadyRegister = this.repository.find(
       (u) => u.email == user.email
@@ -40,6 +41,20 @@ export class UsersInMemoryRepository implements IUsersRepository {
     this.repository.push(createdUser)
 
     return createdUser
+  }
+
+  async update(user: User): Promise<User> {
+    const user_index = this.repository.findIndex((u) => u.id == user.id)
+
+    this.repository[user_index] = user
+
+    return this.repository[user_index]
+  }
+
+  async findByID(id: string): Promise<User | null> {
+    let user = this.repository.find((u) => u.id == id)
+
+    return user || null
   }
 
   async findByEmail(email: string): Promise<User | null> {
