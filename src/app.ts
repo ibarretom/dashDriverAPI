@@ -6,6 +6,7 @@ import 'reflect-metadata'
 
 import { router } from './routes/index.routes'
 import { AppDataSource } from './config/typeorm'
+import upload from './config/upload'
 
 import { AppError } from './errors/AppError'
 
@@ -20,6 +21,8 @@ process.env.NODE_ENV != 'test' &&
     .catch((err) => console.log(err))
 
 app.use(router)
+
+app.use('/avatar', express.static(`${upload.tmpFolder}/avatar`))
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof AppError) {
