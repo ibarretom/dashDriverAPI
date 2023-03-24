@@ -20,8 +20,9 @@ export class UploadPhotoService {
     if (!user) {
       throw new AppError('User not found')
     }
+
     if (user.photo_url) {
-      this.storageProvider.delete(avatar_file, 'avatar')
+      await this.storageProvider.delete(user.photo_url, 'avatar')
     }
 
     await this.storageProvider.save(avatar_file, 'avatar')
