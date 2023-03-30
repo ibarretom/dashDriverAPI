@@ -92,7 +92,7 @@ describe('Get car info controller', () => {
   it('Should be able to get the car info by month', async () => {
     const car_info_response = await request(app)
       .get('/carInfo')
-      .send({
+      .query({
         iso_date: new Date(2022, 2, 24).toISOString(),
       })
       .set({

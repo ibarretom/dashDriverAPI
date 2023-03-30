@@ -11,7 +11,7 @@ export class GetCarInfoController {
     })
 
     const { id: user_id } = request.user
-    const { iso_date } = getCarInfoScheme.parse(request.body)
+    const { iso_date } = getCarInfoScheme.parse(request.query)
 
     const car_info = await this.getCarInfoService.execute({
       date: iso_date,
