@@ -141,7 +141,7 @@ describe('Get revenue controller', () => {
   it('Should be able to get a revenue by month', async () => {
     const revenue_response = await request(app)
       .get('/revenue')
-      .send({
+      .query({
         date: new Date(2023, 1, 4).toISOString(),
       })
       .set({

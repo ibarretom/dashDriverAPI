@@ -11,7 +11,8 @@ export class GetRevenueController {
     })
 
     const { id: user_id } = request.user
-    const { date } = getRevenueSchema.parse(request.body)
+
+    const { date } = getRevenueSchema.parse(request.query)
 
     const revenue = await this.getRevenueService.execute({ date, user_id })
 
