@@ -68,7 +68,7 @@ describe('Most visited address by day controller', () => {
   it('Should be able to list all addresses most visited by day', async () => {
     const address_response = await request(app)
       .get('/address/mostVisitedByDay')
-      .send({
+      .query({
         date: new Date(2023, 2, 1).toISOString(),
       })
       .set({

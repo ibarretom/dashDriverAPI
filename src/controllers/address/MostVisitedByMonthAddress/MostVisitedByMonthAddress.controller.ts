@@ -13,7 +13,7 @@ export class MostVisitedByMonthAddressController {
       date: z.string(),
     })
 
-    const { date } = mostVisitedSchema.parse(request.body)
+    const { date } = mostVisitedSchema.parse(request.query)
 
     const most_visited = await this.mostVisitedByMonthService.execute(date)
 

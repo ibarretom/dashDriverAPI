@@ -13,7 +13,7 @@ export class MostVisitedByDayAddressController {
       date: z.string(),
     })
 
-    const { date } = mostVisitedSchema.parse(request.body)
+    const { date } = mostVisitedSchema.parse(request.query)
 
     const most_visited = await this.mostVisitedByDayAddressService.execute(date)
 
