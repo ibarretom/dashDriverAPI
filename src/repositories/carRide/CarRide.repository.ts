@@ -57,8 +57,8 @@ export class CarRideRepository implements ICarRideRepository {
       },
       where: {
         car_ride_date: Between(
-          new Date(year, month, 1, day, 0, 0, 0),
-          new Date(year, month + 1, day, 23, 59, 59) // 0 pega o dia anterior ao ultimo do mes month + 1
+          new Date(year, month, day, 0, 0, 0),
+          new Date(year, month, day, 23, 59, 59) // 0 pega o dia anterior ao ultimo do mes month + 1
         ),
       },
     })

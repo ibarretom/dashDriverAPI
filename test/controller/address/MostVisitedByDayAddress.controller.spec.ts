@@ -36,6 +36,23 @@ describe('Most visited address by day controller', () => {
           street: 'Rua Luiz Camões',
           neighborhood: 'Estrela do Norte',
         },
+        iso_date: new Date(2023, 2, 1, 23, 59, 59).toISOString() /* 23 horas */,
+      })
+      .set({
+        Authorization: `Bearer ${token}`,
+      })
+
+    await request(app)
+      .post('/carride')
+      .send({
+        amount: 13.75,
+        address: {
+          zip_code: 24445570,
+          federated_unit: 'RJ',
+          city: 'São Gonçalo',
+          street: 'Rua Luiz Camões',
+          neighborhood: 'Estrela do Norte',
+        },
         iso_date: new Date(2023, 2, 2, 23, 59, 59).toISOString() /* 23 horas */,
       })
       .set({
@@ -69,7 +86,7 @@ describe('Most visited address by day controller', () => {
     const address_response = await request(app)
       .get('/address/mostVisitedByDay')
       .query({
-        date: new Date(2023, 2, 1).toISOString(),
+        date: new Date(2023, 2, 2).toISOString(),
       })
       .set({
         Authorization: `Bearer ${token}`,
